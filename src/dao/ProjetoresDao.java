@@ -155,4 +155,45 @@ public class ProjetoresDao implements DaoGenerica<ModeloProjetores> {
             throw new RuntimeException(ex);
         }
     }
+
+    public ArrayList<ModeloProjetores> pesquisar(String str) {
+        ArrayList<ModeloProjetores> lista = new ArrayList<ModeloProjetores>();
+        String sql = "SELECT pr.idProjetor, pr.numSerie, pr.idModelo, pr.idCinema, pr.idStatus, pr.dataFabricacao, pr.dataInstalacao, "
+                   + "mo.nomeModelo, mo.idMarca, ma.nomeMarca, ci.nomeCinema, st.nomeStatus "
+                   + "FROM projetores as pr "
+                   + "LEFT JOIN modelos as mo ON mo.idModelo = pr.idModelo "
+                   + "LEFT JOIN marcas as ma ON mo.idModelo = pr.idModelo AND mo.idMarca = ma.idMarca "
+                   + "LEFT JOIN cinemas as ci ON ci.idCinema = pr.idCinema "
+                   + "LEFT JOIN status as st ON st.idStatus = pr.idStatus "
+//                   + "WHERE pr.numSerie LIKE '%777%';";
+                   + "WHERE pr.numSerie LIKE ?;";
+        try {
+            if (this.conexao.conectar()) {
+                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
+                sentenca.setString(1, "%"+str+"%");
+                ResultSet resultadoSentenca = sentenca.executeQuery();
+                while (resultadoSentenca.next()) {
+                    ModeloProjetores projetor = new ModeloProjetores();
+                    projetor.setIdProjetor(resultadoSentenca.getInt("pr.idProjetor"));
+                    projetor.setIdModelo(resultadoSentenca.getInt("pr.idModelo"));
+                    projetor.setIdCinema(resultadoSentenca.getInt("pr.idCinema"));
+                    projetor.setIdStatus(resultadoSentenca.getInt("pr.idStatus"));
+                    projetor.setIdMarca(resultadoSentenca.getInt("mo.idMarca"));
+                    projetor.setNumSerie(resultadoSentenca.getString("numSerie"));
+                    projetor.setNomeModelo(resultadoSentenca.getString("nomeModelo"));
+                    projetor.setNomeCinema(resultadoSentenca.getString("nomeCinema"));
+                    projetor.setNomeStatus(resultadoSentenca.getString("nomeStatus"));
+                    projetor.setNomeMarca(resultadoSentenca.getString("nomeMarca"));
+                    projetor.setDataFabricacao(resultadoSentenca.getDate("pr.dataFabricacao"));
+                    projetor.setDataInstalacao(resultadoSentenca.getTimestamp("pr.dataInstalacao"));
+                    lista.add(projetor);
+                }
+                sentenca.close();
+                this.conexao.getConnection().close();
+            }
+            return lista;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 }

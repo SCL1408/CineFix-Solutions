@@ -76,6 +76,8 @@ public class Projetores extends javax.swing.JFrame {
         ljIcon = new javax.swing.JLabel();
         jbAdicionarTipo = new javax.swing.JButton();
         listaIDS = new java.awt.List();
+        jtPesquisa = new javax.swing.JTextField();
+        jlPesquisa = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProjetores = new javax.swing.JTable();
 
@@ -261,6 +263,20 @@ public class Projetores extends javax.swing.JFrame {
 
         listaIDS.setVisible(false);
 
+        jtPesquisa.setBackground(new java.awt.Color(255, 255, 255));
+        jtPesquisa.setNextFocusableComponent(jcbModelo);
+        jtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtPesquisaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPesquisaKeyReleased(evt);
+            }
+        });
+
+        jlPesquisa.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jlPesquisa.setText("Pesquise por número de série");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -284,18 +300,28 @@ public class Projetores extends javax.swing.JFrame {
                         .addComponent(jbAdicionarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlNumSerie)
                     .addComponent(jtNumSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlStatus)
-                            .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlCinema)
-                            .addComponent(jcbCinema, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jftDataInstalacao, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlDataInstalacao))
-                .addGap(392, 392, 392))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jftDataInstalacao, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDataInstalacao))
+                        .addGap(346, 346, 346))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlStatus)
+                                .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlCinema)
+                                .addComponent(jcbCinema, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlPesquisa)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(118, 118, 118))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(474, 474, 474)
                 .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,26 +344,32 @@ public class Projetores extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(h2Titulo)
-                            .addComponent(jbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ljIcon)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(h2Titulo)
+                                    .addComponent(jbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ljIcon)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(listaIDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNumSerie)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlCinema)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtNumSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbCinema, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(listaIDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlNumSerie)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jlCinema)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtNumSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbCinema, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -544,7 +576,7 @@ public class Projetores extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 2!", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbRemoverActionPerformed
 
@@ -609,6 +641,14 @@ public class Projetores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tbProjetoresMouseClicked
 
+    private void jtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyReleased
+        //pesquisar();
+    }//GEN-LAST:event_jtPesquisaKeyReleased
+
+    private void jtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesquisaKeyPressed
+        pesquisar();
+    }//GEN-LAST:event_jtPesquisaKeyPressed
+
     private void renderizarTabelaProjetores() {
         new Thread() {
             @Override
@@ -619,6 +659,7 @@ public class Projetores extends javax.swing.JFrame {
                     ProjetoresDao projetorDao = new ProjetoresDao();
                     
                     limparTabela(tbProjetores);
+                    listaIDS.removeAll();
                     listaProjetores = projetorDao.consultar();
                     for (ModeloProjetores projetor : listaProjetores) {
                         tdm.addRow(new String[]{
@@ -675,7 +716,7 @@ public class Projetores extends javax.swing.JFrame {
                     if(jcbMarca.getSelectedIndex()==-1)
                         jcbModelo.setSelectedIndex(-1);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 3!", ERROR_MESSAGE);
                     Thread.interrupted();
                 }
             }
@@ -698,7 +739,7 @@ public class Projetores extends javax.swing.JFrame {
                     }
                     jcbMarca.setSelectedIndex(-1);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 4!", ERROR_MESSAGE);
                     Thread.interrupted();
                 }
             }
@@ -721,7 +762,7 @@ public class Projetores extends javax.swing.JFrame {
                     }
                     jcbCinema.setSelectedIndex(-1);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 5!", ERROR_MESSAGE);
                     Thread.interrupted();
                 }
             }
@@ -744,7 +785,7 @@ public class Projetores extends javax.swing.JFrame {
                     }
                     jcbStatus.setSelectedIndex(-1);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 6!", ERROR_MESSAGE);
                     Thread.interrupted();
                 }
             }
@@ -771,6 +812,32 @@ public class Projetores extends javax.swing.JFrame {
         while (tbTiposProjetor.getRowCount() > 0) {
             DefaultTableModel dm = (DefaultTableModel) tbTiposProjetor.getModel();
             dm.getDataVector().removeAllElements();
+        }
+    }
+    
+    private void pesquisar(){
+        try{
+            ProjetoresDao projetorDao = new ProjetoresDao();
+            ArrayList<ModeloProjetores> listaProjetores;
+            DefaultTableModel tdm = (DefaultTableModel) tbProjetores.getModel();
+            listaProjetores = projetorDao.pesquisar(this.jtPesquisa.getText().trim());
+            listaIDS.removeAll();
+            limparTabela(tbProjetores);
+            for (ModeloProjetores projetor : listaProjetores) {
+                tdm.addRow(new String[]{
+                    projetor.getNumSerie(),
+                    projetor.getNomeModelo(),
+                    projetor.getNomeMarca(),
+                    projetor.getNomeCinema(),
+                    projetor.getNomeStatus(),
+                    projetor.getDataFabricacao().toString(),
+                    projetor.getDataInstalacao().toString()
+                });
+                listaIDS.add(String.valueOf(projetor.getIdProjetor()));
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 7!", ERROR_MESSAGE);
         }
     }
 
@@ -931,7 +998,7 @@ public class Projetores extends javax.swing.JFrame {
                             jtNovoTipo.setText(null);
                             jtNovoTipo.requestFocus();
                         } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 8!", ERROR_MESSAGE);
                         }
                     }
                 }
@@ -955,7 +1022,7 @@ public class Projetores extends javax.swing.JFrame {
                             }
                         }
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 9!", ERROR_MESSAGE);
                     }
                 }
             });
@@ -1044,7 +1111,7 @@ public class Projetores extends javax.swing.JFrame {
                 }
                 tbTipos.setDefaultRenderer(Object.class, new CustomTableCellRenderer(indexArray, Color.GREEN));
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO!", ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + ex.getMessage(), "ERRO 10!", ERROR_MESSAGE);
             }
         }
 
@@ -1206,9 +1273,11 @@ public class Projetores extends javax.swing.JFrame {
     private javax.swing.JLabel jlMarca;
     private javax.swing.JLabel jlModelo;
     private javax.swing.JLabel jlNumSerie;
+    private javax.swing.JLabel jlPesquisa;
     private javax.swing.JLabel jlStatus;
     private javax.swing.JLabel jlTipo;
     private javax.swing.JTextField jtNumSerie;
+    private javax.swing.JTextField jtPesquisa;
     private java.awt.List listaIDS;
     private javax.swing.JLabel ljIcon;
     private javax.swing.JTable tbProjetores;
